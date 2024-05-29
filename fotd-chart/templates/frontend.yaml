@@ -21,12 +21,12 @@ spec:
           image: {{ .image }}
           imagePullPolicy: Always
           env:
-            - name: STREAMLIT_SERVER_PORT
-              value: "{{ .port }}"
             - name: FRONTEND_CLIENT__BASE_URL
-              value: "http://{{ $.Release.Name }}-backend:{{ $.Values.backend.port }}"
+              value: "http://{{ $.Release.Name }}-backend:{{ $.Values.backend.port }}/api"
           ports:
-            - containerPort: {{ .port }}
+            - name: http
+              protocol: TCP
+              containerPort: {{ .port }}
 ---
 apiVersion: v1
 kind: Service
