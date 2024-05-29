@@ -45,6 +45,8 @@ spec:
                 secretKeyRef:
                   name: {{ $.Release.Name }}-{{ $component_type }}
                   key: OPENAI_API_KEY
+            - name: BASE_URL
+              value: "/api"
           ports:
             - containerPort: {{ .port }}
 ---
