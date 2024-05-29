@@ -1,0 +1,12 @@
+apiVersion: v2
+name: flowers of the day helm chart
+version: 0.1.0
+appVersion: "1.16.0"
+description: helm chart for the project, flower of the day
+type: application
+keywords:
+  - "application"
+
+maintainers:
+  - name: Shiwon Park
+    email: siwon1115@gm.gist.ac.kr

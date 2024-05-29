@@ -1,0 +1,30 @@
+backend:
+  image: ghcr.io/flowers-of-the-day/backend:v0.1.14
+  port: 8000
+  replicas: 1
+  strategy: RollingUpdate
+  openai_api_key: xxxxx
+
+frontend:
+  image: ghcr.io/flowers-of-the-day/frontend:v0.1.3
+  port: 8501
+  replicas: 1
+  strategy: RollingUpdate
+
+database:
+  image: postgres:16
+  port: 5432
+  replicas: 1
+  strategy: Recreate
+  username: mobilex
+  dbname: mobilex
+
+nginx:
+  # TA Note: Nginx은 미리 다음과 같이 설정되어 있다.
+  # - Frontend 접근 시: 별도 prefix 없음
+  # - Backend 접근 시: /api prefix 사용
+  # 변경하려면 차트에서 손을 보아야 한다.
+  image: nginx:1.25.5
+  port: 80
+  replicas: 1
+  strategy: RollingUpdate
